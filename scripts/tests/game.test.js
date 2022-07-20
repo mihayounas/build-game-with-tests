@@ -3,7 +3,9 @@
  */
 
 const {
-    game
+    game,
+    newGame,
+    showScore
 } = require("../game");
 
 
@@ -22,4 +24,35 @@ describe("game object contains correct keys", () => {
     test("currentGame key exists", () => {
         expect("currentGame" in game).toBe(true);
     });
+    test("playerMoves key exists", () => {
+        expect("currentGame" in game).toBe(true);
+    });
+    test("choices key exists", () => {
+        expect("currentGame" in game).toBe(true);
+    });
+    test("choices contains correct id", () => {
+        expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
+    });
 });
+
+describe("newGame works correctly", () => {
+    beforeAll(() => {
+        game.score = 42;
+        game.playerMoves = ["button1", "button2"]
+        game.currentGame = ["button1", "button2"]
+        document.getElementById("score").innerHTML = 42
+        newGame()
+    })
+    test("should reset score to 0", () => {
+        expect(game.score).toEqual(0)
+    })
+    test("should clear playerMoves array", () => {
+        expect(game.playerMoves.length).toBe(0)
+    })
+    test("should clear currentGame array", () => {
+        expect(game.currentGame.length).toBe(0)
+    })
+    test("should display 0 for the element with id of score ", () => {
+        expect(document.getElementById("score").innerText).toEqual(0)
+    })
+})
