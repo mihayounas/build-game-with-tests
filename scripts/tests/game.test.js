@@ -49,8 +49,8 @@ describe("newGame works correctly", () => {
     test("should clear playerMoves array", () => {
         expect(game.playerMoves.length).toBe(0)
     })
-    test("should clear currentGame array", () => {
-        expect(game.currentGame.length).toBe(0)
+    test("should be one move in computer's array", () => {
+        expect(game.currentGame.length).toBe(1)
     })
     test("should display 0 for the element with id of score ", () => {
         expect(document.getElementById("score").innerText).toEqual(0)
